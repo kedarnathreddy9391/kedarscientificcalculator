@@ -122,11 +122,16 @@
     <script>
 
         let display = document.getElementById("display");
+        let answerDisplayed = false;
 
         function appendValue(value) {
 
             if (display.value === "Error") {
                 display.value = "";
+            }
+            if (answerDisplayed) {
+                display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += value;
@@ -175,8 +180,9 @@
 
         function square() {
 
-            if (display.value === "Error") {
+            if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "**2";
@@ -184,8 +190,9 @@
 
         function sqrt() {
 
-            if (display.value === "Error") {
+            if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "sqrt(";
@@ -193,8 +200,9 @@
 
         function sin() {
 
-            if (display.value === "Error") {
+            if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "sin(";
@@ -202,17 +210,19 @@
 
         function cos() {
 
-            if (display.value === "Error") {
+             if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "cos(";
-            }
+        }
 
         function tan() {
 
-            if (display.value === "Error") {
+            if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "tan(";
@@ -220,8 +230,9 @@
 
         function log() {
 
-            if (display.value === "Error") {
+            if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "log(";
@@ -229,8 +240,9 @@
 
         function ln() {
 
-            if (display.value === "Error") {
+            if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "ln(";
@@ -238,8 +250,9 @@
 
         function pi() {
 
-            if (display.value === "Error") {
+            if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "π";
@@ -247,8 +260,9 @@
 
         function euler() {
 
-            if (display.value === "Error") {
+            if (display.value === "Error" || answerDisplayed) {
                 display.value = "";
+                answerDisplayed = false;
             }
 
             display.value += "e";
