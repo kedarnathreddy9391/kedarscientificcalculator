@@ -172,6 +172,8 @@
                     (_, x) => Math.log(eval(x)));
 
                 display.value = eval(expression);
+                
+                answerDisplayed = true;
 
             } catch {
                 display.value = "Error";
