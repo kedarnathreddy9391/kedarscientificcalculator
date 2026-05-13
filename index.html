@@ -124,6 +124,11 @@
         let display = document.getElementById("display");
 
         function appendValue(value) {
+
+            if (display.value === "Error") {
+                display.value = "";
+            }
+
             display.value += value;
         }
 
@@ -137,47 +142,73 @@
 
         function calculate() {
             try {
-                display.value = eval(display.value);
+
+                let expression = display.value;
+
+                expression = expression.replace(/π/g, Math.PI);
+                expression = expression.replace(/e/g, Math.E);
+
+                expression = expression.replace(/sin\(([^)]+)\)/g,
+                    (_, x) => Math.sin(eval(x) * Math.PI / 180));
+
+                expression = expression.replace(/cos\(([^)]+)\)/g,
+                    (_, x) => Math.cos(eval(x) * Math.PI / 180));
+
+                expression = expression.replace(/tan\(([^)]+)\)/g,
+                    (_, x) => Math.tan(eval(x) * Math.PI / 180));
+
+                expression = expression.replace(/sqrt\(([^)]+)\)/g,
+                    (_, x) => Math.sqrt(eval(x)));
+
+                expression = expression.replace(/log\(([^)]+)\)/g,
+                    (_, x) => Math.log10(eval(x)));
+
+                expression = expression.replace(/ln\(([^)]+)\)/g,
+                    (_, x) => Math.log(eval(x)));
+
+                display.value = eval(expression);
+
             } catch {
                 display.value = "Error";
             }
         }
 
         function square() {
-            display.value = Math.pow(eval(display.value), 2);
+            display.value += "**2";
         }
 
         function sqrt() {
-            display.value = Math.sqrt(eval(display.value));
+            display.value += "sqrt(";
         }
 
         function sin() {
-            display.value = Math.sin(eval(display.value) * Math.PI / 180);
+            display.value += "sin(";
         }
 
         function cos() {
-            display.value = Math.cos(eval(display.value) * Math.PI / 180);
+            display.value += "cos(";
         }
 
         function tan() {
-            display.value = Math.tan(eval(display.value) * Math.PI / 180);
+            display.value += "tan(";
         }
 
         function log() {
-            display.value = Math.log10(eval(display.value));
+            display.value += "log(";
         }
 
         function ln() {
-            display.value = Math.log(eval(display.value));
+            display.value += "ln(";
         }
 
         function pi() {
-            display.value += Math.PI;
+            display.value += "π";
         }
 
         function euler() {
-            display.value += Math.E;
+            display.value += "e";
         }
+
 
     </script>
 
